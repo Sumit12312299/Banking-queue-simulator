@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   Users, UserCheck, UserPlus, Sliders, RefreshCw, 
   ShieldAlert, Trash2, CheckCircle, Activity, 
-  BarChart3, Play, Pause, Terminal, Clock, Star, ArrowRight
+  BarChart3, Play, Pause, Terminal, Clock, Star, ArrowRight,
+  Sun, Moon
 } from 'lucide-react';
 import './App.css';
 
@@ -48,6 +49,16 @@ function App() {
 
   // --- Live Event Logs ---
   const [logs, setLogs] = useState([]);
+
+  // --- Theme Mode State ---
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "dark";
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
   
   // --- Refs for State sync (Strict Mode safe & stale closure proof) ---
   const vipQueueRef = useRef([]);
@@ -458,9 +469,21 @@ function App() {
           <h1>🏦 <span className="text-gradient">Banking Queue Simulator</span></h1>
           <p>Simulating Priority Queue & FIFO queue routing policies with starve prevention scheduling</p>
         </div>
-        <div className="policy-badge">
-          <span className="badge-dot" style={{ backgroundColor: autoSimEnabled ? '#10b981' : '#f59e0b' }}></span>
-          <span>Simulation: <strong>{autoSimEnabled ? "RUNNING" : "PAUSED"}</strong></span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.65rem' }}>
+          {/* Theme Toggle Button */}
+          <button 
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            className="theme-toggle-btn"
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          >
+            {theme === 'dark' ? <Sun size={14} /> : <Moon size={14} />}
+            <span style={{ fontSize: '0.75rem', fontWeight: 700 }}>{theme === 'dark' ? "Light" : "Dark"}</span>
+          </button>
+
+          <div className="policy-badge">
+            <span className="badge-dot" style={{ backgroundColor: autoSimEnabled ? '#10b981' : '#f59e0b' }}></span>
+            <span>Simulation: <strong>{autoSimEnabled ? "RUNNING" : "PAUSED"}</strong></span>
+          </div>
         </div>
       </header>
 
