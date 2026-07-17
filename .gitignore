@@ -1,0 +1,18 @@
+# Java build files
+bin/
+*.class
+
+# Node / React dependencies and builds
+web-app/node_modules/
+web-app/dist/
+web-app/.env
+web-app/.oxlintrc.json
+
+# IDE config files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
