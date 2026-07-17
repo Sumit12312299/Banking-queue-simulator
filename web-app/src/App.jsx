@@ -502,7 +502,7 @@ function App() {
                 <input 
                   type="text" 
                   className="input-text" 
-                  placeholder="e.g. Sumit Kumar"
+                  placeholder="Enter Customer Name"
                   value={formName}
                   onChange={(e) => setFormName(e.target.value)}
                   maxLength={25}
