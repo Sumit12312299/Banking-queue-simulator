@@ -45,6 +45,12 @@
   --empty-border: rgba(255, 255, 255, 0.02);
   --placeholder-bg: rgba(0, 0, 0, 0.12);
   --glow-opacity: 0.1;
+
+  /* Header & Badge Dynamic variables */
+  --title-gradient: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
+  --badge-bg: rgba(99, 102, 241, 0.05);
+  --badge-border: rgba(99, 102, 241, 0.12);
+  --badge-text: #a5b4fc;
 }
 
 :root[data-theme="light"] {
@@ -68,6 +74,12 @@
   --empty-border: rgba(0, 0, 0, 0.04);
   --placeholder-bg: rgba(241, 245, 249, 0.65);
   --glow-opacity: 0.04;
+
+  /* Header & Badge Dynamic variables */
+  --title-gradient: linear-gradient(135deg, #4f46e5 0%, #06b6d4 50%, #0d9488 100%);
+  --badge-bg: rgba(79, 70, 229, 0.06);
+  --badge-border: rgba(79, 70, 229, 0.15);
+  --badge-text: #4f46e5;
 }
 
 /* Background Glow Blobs with Premium Rotation floating paths */
@@ -136,7 +148,7 @@ h1, h2, h3, h4 {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
+  background: var(--title-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -176,11 +188,11 @@ h1, h2, h3, h4 {
   align-items: center;
   gap: 0.5rem;
   padding: 0.4rem 0.85rem;
-  background: rgba(99, 102, 241, 0.05);
-  border: 1px solid rgba(99, 102, 241, 0.12);
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
   border-radius: 9999px;
   font-size: 0.8rem;
-  color: #a5b4fc;
+  color: var(--badge-text);
   backdrop-filter: blur(8px);
 }
 
