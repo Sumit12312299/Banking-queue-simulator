@@ -1106,3 +1106,53 @@ input:checked + .toggle-slider:before {
 .history-table tr:hover {
   background: var(--table-row-hover);
 }
+
+/* --- STATS VALUE POP ANIMATION --- */
+.pulse-text {
+  animation: value-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes value-pop {
+  0% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.12); filter: brightness(1.4); text-shadow: 0 0 10px rgba(99, 102, 241, 0.4); }
+  100% { transform: scale(1); filter: brightness(1); text-shadow: none; }
+}
+
+/* --- VVIP SHIMMER SWEEP REFLECTION --- */
+.customer-queue-card.VVIP {
+  position: relative;
+  overflow: hidden;
+}
+
+.customer-queue-card.VVIP::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+  transform: skewX(-25deg);
+  animation: shimmer-sweep 4s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes shimmer-sweep {
+  0% { left: -150%; }
+  35% { left: 150%; }
+  100% { left: 150%; }
+}
+
+/* --- BUSY TELLER AVATAR ROTATION --- */
+.teller-card.busy .teller-avatar {
+  animation: avatar-spin 4s infinite linear;
+  border: 1.5px dashed #a855f7 !important;
+  background: rgba(168, 85, 247, 0.1) !important;
+  color: #c084fc !important;
+}
+
+@keyframes avatar-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+

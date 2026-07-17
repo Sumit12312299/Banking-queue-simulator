@@ -678,19 +678,22 @@ function App() {
           <div className="stat-panel-row">
             <div className="stat-card">
               <span className="stat-label">Served (VIP / REG)</span>
-              <span className="stat-value">{stats.totalServed} <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>({stats.vipServed} / {stats.regularServed})</span></span>
+              <span className="stat-value">
+                <span key={stats.totalServed} className="pulse-text" style={{ display: 'inline-block' }}>{stats.totalServed}</span>
+                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginLeft: '0.35rem', fontWeight: 500 }}>({stats.vipServed}/{stats.regularServed})</span>
+              </span>
             </div>
             <div className="stat-card">
               <span className="stat-label">Avg. Wait Time</span>
-              <span className="stat-value" style={{ color: '#6366f1' }}>{stats.avgWait}s</span>
+              <span key={stats.avgWait} className="stat-value pulse-text" style={{ color: '#6366f1', display: 'inline-block' }}>{stats.avgWait}s</span>
             </div>
             <div className="stat-card">
               <span className="stat-label">Avg. VIP Wait</span>
-              <span className="stat-value" style={{ color: '#c084fc' }}>{stats.avgVipWait}s</span>
+              <span key={stats.avgVipWait} className="stat-value pulse-text" style={{ color: '#c084fc', display: 'inline-block' }}>{stats.avgVipWait}s</span>
             </div>
             <div className="stat-card">
               <span className="stat-label">Max Wait Time</span>
-              <span className="stat-value" style={{ color: '#ef4444' }}>{stats.maxWait}s</span>
+              <span key={stats.maxWait} className="stat-value pulse-text" style={{ color: '#ef4444', display: 'inline-block' }}>{stats.maxWait}s</span>
             </div>
           </div>
 
