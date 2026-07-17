@@ -47,7 +47,7 @@
   --glow-opacity: 0.1;
 
   /* Header & Badge Dynamic variables */
-  --title-gradient: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #818cf8 100%);
+  --title-color: #ffffff;
   --badge-bg: rgba(99, 102, 241, 0.05);
   --badge-border: rgba(99, 102, 241, 0.12);
   --badge-text: #a5b4fc;
@@ -76,7 +76,7 @@
   --glow-opacity: 0.04;
 
   /* Header & Badge Dynamic variables */
-  --title-gradient: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #3b82f6 100%);
+  --title-color: #0f172a; /* Sophisticated Obsidian Slate Navy */
   --badge-bg: rgba(79, 70, 229, 0.06);
   --badge-border: rgba(79, 70, 229, 0.15);
   --badge-text: #4f46e5;
@@ -148,10 +148,7 @@ h1, h2, h3, h4 {
 }
 
 .text-gradient {
-  background: var(--title-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--title-color);
 }
 
 /* Layout */
