@@ -46,6 +46,7 @@ function App() {
   const [minServiceTime, setMinServiceTime] = useState(3); // min serving duration
   const [maxServiceTime, setMaxServiceTime] = useState(7); // max serving duration
   const [vipProbability, setVipProbability] = useState(30); // VIP chance in %
+  const [simSpeed, setSimSpeed] = useState(1); // Simulation tick speed multiplier
 
   // --- Live Event Logs ---
   const [logs, setLogs] = useState([]);
@@ -416,7 +417,7 @@ function App() {
           }
         }
 
-      }, 1000);
+      }, 1000 / simSpeed);
     } else {
       if (timerRef.current) {
         clearInterval(timerRef.current);
@@ -427,7 +428,7 @@ function App() {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [autoSimEnabled, arrivalRate, minServiceTime, maxServiceTime, vipProbability, starvePreventionEnabled, maxConsecutiveVips]);
+  }, [autoSimEnabled, arrivalRate, minServiceTime, maxServiceTime, vipProbability, starvePreventionEnabled, maxConsecutiveVips, simSpeed]);
 
   // --- Statistics Calculation ---
   const calculateStats = () => {
@@ -641,6 +642,21 @@ function App() {
                 className="slider-input"
                 value={vipProbability}
                 onChange={(e) => setVipProbability(parseInt(e.target.value))}
+              />
+            </div>
+
+            <div className="slider-group">
+              <div className="slider-header">
+                <span>Simulation Speed</span>
+                <strong>{simSpeed}x ({Math.round(1000 / simSpeed)}ms)</strong>
+              </div>
+              <input 
+                type="range" 
+                min="1" 
+                max="5" 
+                className="slider-input"
+                value={simSpeed}
+                onChange={(e) => setSimSpeed(parseInt(e.target.value))}
               />
             </div>
 
